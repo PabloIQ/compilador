@@ -28,7 +28,7 @@
             <div class="sesion"></div>
             <ul>
                 {% if user.email %}
-                <li>{{ user.first_name }}</li>
+                <li>{{ user }}</li>
                 <li>{{ user.email }}</li>
                 <li><a href="{% url 'logout' %}">Salir</a></li>
                 {% else %}
