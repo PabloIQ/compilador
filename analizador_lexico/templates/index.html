@@ -40,6 +40,8 @@
     <h1 class="titulo">{{ title }}</h1>
     
     {% block contenido %}
+    {{ user.first_name }}
+    {{ user.email }}
     {% endblock %}
 
 </body>
