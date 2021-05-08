@@ -1,0 +1,24 @@
+{% extends 'index.html' %}
+
+{% block contenido %}
+    {% include 'messages.html' %}
+    <div class="login">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="img v"></div>
+            <div class="v">
+                <label for="user">Nombre de usuario</label><br/>
+                <div class="u"></div>
+                <input type="text" name="user" class="user us" placeholder="Ingrese su usuario">
+            </div>
+        
+            <div class="v">
+                <label for="passw">Contraseña</label><br/>
+                <div class="p"></div>
+                <input type="password" name="password" class="passw pas" placeholder="Ingrese su contraseña">
+            </div>
+            <input type="submit" class="btn" value="Ingresar">
+        </form>
+    </div>
+    {{ user.email }}
+{% endblock %}

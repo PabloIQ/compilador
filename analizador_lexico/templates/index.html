@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analizador Léxico</title>
+
+    <!--Code Mirror-->
+    <script src="static/codemirror/lib/codemirror.js"></script>
+    <link rel="stylesheet" href="{% static 'codemirror/lib/codemirror.css' %}">
+    <script src="static/codemirror/mode/xml/xml.js"></script>
+    <script src="static/codemirror/mode/python/python.js"></script>
+    <link rel="stylesheet" href="{% static 'codemirror/theme/dracula.css' %}">
+    <!--Activar Code Mirror-->
+    <script defer src="static/js/activar.js"></script>
+    <!--Estilos al body-->
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+    <!--------SweetAlert2--------->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+</head>
+<body>
+    
+    <header class="header">
+        <div class="panel-sesion">
+            <div class="sesion"></div>
+            <ul>
+                {% if user.email %}
+                <li>{{ user.first_name }}</li>
+                <li>{{ user.email }}</li>
+                <li><a href="{% url 'logout' %}">Salir</a></li>
+                {% else %}
+                    <li>Inicie sesión para continuar</li>
+                {% endif %}
+            </ul>
+        </div>
+    </header>
+    <h1 class="titulo">{{ title }}</h1>
+    
+    {% block contenido %}
+    {% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+{% extends 'index.html' %}
+
+{% block contenido %}
+    {% include 'messages.html' %}
+    <form class="editor" method="post">
+        {% csrf_token %}
+
+        <textarea name="editor" id="editor"></textarea>
+        <div class="btnd">
+            <input type="submit" class="btn0" value="Ejecutar">
+        </div>
+    </form>
+
+    <div class="tablas">
+        {% if tokensValidos|length > 0 %}
+            <table>
+                <tbody>
+                    <tr>
+                        <th>NOMBRE INTERNO</th>
+                        <th>TOKEN</th>
+                        <th>TIPO TOKEN</th>
+                        <th>LÍNEA</th>
+                    </tr>
+                    {% for i in tokensValidos %}
+                        <tr>
+                            <td> {{ i.0 }} </td>
+                            <td> {{ i.1 }} </td>
+                            <td> {{ i.2 }} </td>
+                            <td> {{ i.3 }} </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}   
+
+        {% if tokensError|length > 0 %}
+            <div>
+                <h1>Tokens Inválidos</h1>
+                <table>
+                    <tbody>
+                        <tr>
+                            <th>NOMBRE INTERNO</th>
+                            <th>TOKEN</th>
+                            <th>TIPO TOKEN</th>
+                            <th>LÍNEA</th>
+                        </tr>
+                        {% for i in tokensError %}
+                            <tr>
+                                <td> {{ i.0 }} </td>
+                                <td> {{ i.1 }} </td>
+                                <td> {{ i.2 }} </td>
+                                <td> {{ i.3 }} </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
