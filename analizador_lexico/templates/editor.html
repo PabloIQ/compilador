@@ -1,5 +1,10 @@
 {% extends 'index.html' %}
 
+    {% block titulo %}
+        <h1 class="titulo">{{ title }}</h1>
+    {% endblock %}
+
+
 {% block contenido %}
     {% include 'messages.html' %}
     <form class="editor" method="post">

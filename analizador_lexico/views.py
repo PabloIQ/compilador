@@ -28,6 +28,12 @@ def Index (request):
         'tokensError': listErrors
     })
 
+def Sintactico(respuesta):
+
+    return render(respuesta, 'sintactico.html', {
+        'title': 'ANALIZADOR SINTÁCTICO'
+    })
+
 def Login (respuesta):
 
     if respuesta.method == 'POST':

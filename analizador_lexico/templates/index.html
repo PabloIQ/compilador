@@ -24,11 +24,15 @@
 <body>
     
     <header class="header">
+        {% if user.email %}
+            <a href="{% url 'index' %}"><div class="lexico"></div></a>
+            <a href="{% url 'sintactico' %}"><div class="sintactico"></div></a>
+        {% endif %}
         <div class="panel-sesion">
             <div class="sesion"></div>
             <ul>
                 {% if user.email %}
-                <li>{{ user.first_name }}</li>
+                <li>{{ user }}</li>
                 <li>{{ user.email }}</li>
                 <li><a href="{% url 'logout' %}">Salir</a></li>
                 {% else %}
@@ -37,11 +41,10 @@
             </ul>
         </div>
     </header>
-    <h1 class="titulo">{{ title }}</h1>
+    {% block titulo %}
+    {% endblock %}
     
     {% block contenido %}
-    {{ user.first_name }}
-    {{ user.email }}
     {% endblock %}
 
 </body>

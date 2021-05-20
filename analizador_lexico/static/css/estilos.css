@@ -235,3 +235,22 @@ input[type="password"]{
     color: white;
     padding: 10% 23%;
 }
+
+.sintactico {
+    width: 145px;
+    height: 64px;
+    margin-right: 10px;
+    margin-left: 10px;
+    background-image: url('image/sintactico.png');
+}
+
+.lexico {
+    width: 100px;
+    height: 64px;
+    background-image: url('image/lexico.png');
+}
+
+.sintactico:hover,
+.lexico:hover {
+    background-color: skyblue;
+}
