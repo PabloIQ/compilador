@@ -22,5 +22,6 @@ urlpatterns = [
     path('', views.Index, name='index'),
     path('login/', views.Login, name='login'),
     path('logout/', views.Logout, name='logout'),
-    path('sintactico/', views.Sintactico, name='sintactico')
+    path('sintactico/', views.Sintactico, name='sintactico'),
+    path('semantico/', views.semantico, name='semantico')
 ]

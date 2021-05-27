@@ -5,7 +5,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Analizador Léxico</title>
+    
+    <title>
+        {% block title %}
+Analizador Léxico
+        {% endblock %}
+    </title>
 
     <!--Code Mirror-->
     <script src="static/codemirror/lib/codemirror.js"></script>
@@ -27,6 +32,7 @@
         {% if user.email %}
             <a href="{% url 'index' %}"><div class="lexico"></div></a>
             <a href="{% url 'sintactico' %}"><div class="sintactico"></div></a>
+            <a href="{% url 'semantico' %}"><div class="semantico"></div></a>
         {% endif %}
         <div class="panel-sesion">
             <div class="sesion"></div>

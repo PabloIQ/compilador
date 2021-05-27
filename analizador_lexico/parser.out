@@ -1,0 +1,118 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    DOT
+    ELSE
+    EQUAL
+    IN
+    INT
+    MULTI
+    OUT
+    SEMMICOLOM
+
+Grammar
+
+Rule 0     S' -> program
+Rule 1     program -> block
+Rule 2     block -> constDecl varDecl procDecl statement
+Rule 3     constDecl -> CONST constAssignmentList SEMMICOLOM
+Rule 4     constDecl -> empty
+Rule 5     constAssignmentList -> ID EQUAL NUMBER
+Rule 6     constAssignmentList -> constAssignmentList COMMA ID EQUAL NUMBER
+Rule 7     varDecl -> VAR identList SEMMICOLOM
+Rule 8     varDecl -> empty
+Rule 9     identList -> ID
+Rule 10    identList -> identList COMMA ID
+Rule 11    procDecl -> procDecl PROCEDURE ID SEMMICOLOM block SEMMICOLOM
+Rule 12    procDecl -> empty
+Rule 13    statement -> ID UPDATE expression
+Rule 14    statement -> CALL ID
+Rule 15    statement -> BEGIN statementList END
+Rule 16    statement -> IF condition THEN statement
+Rule 17    statement -> WHILE condition DO statement
+Rule 18    statement -> empty
+Rule 19    statementList -> statement
+Rule 20    statementList -> statementList SEMMICOLOM statement
+Rule 21    condition -> ODD expression
+Rule 22    condition -> expression relation expression
+Rule 23    relation -> EQUAL
+Rule 24    relation -> NE
+Rule 25    relation -> LT
+Rule 26    relation -> GT
+Rule 27    relation -> LTE
+Rule 28    relation -> GTE
+Rule 29    expression -> term
+Rule 30    expression -> addingOperator term
+Rule 31    expression -> expression addingOperator term
+Rule 32    addingOperator -> PLUS
+Rule 33    addingOperator -> MINUS
+Rule 34    term -> factor
+Rule 35    term -> term multiplyingOperator factor
+Rule 36    multiplyingOperator -> MULTI
+Rule 37    multiplyingOperator -> DIVIDE
+Rule 38    factor -> ID
+Rule 39    factor -> NUMBER
+Rule 40    factor -> LPARENT expression RPARENT
+Rule 41    empty -> <empty>
+
+Terminals, with rules where they appear
+
+BEGIN                : 15
+CALL                 : 14
+COMMA                : 6 10
+CONST                : 3
+DIVIDE               : 37
+DO                   : 17
+DOT                  : 
+ELSE                 : 
+END                  : 15
+EQUAL                : 
+GT                   : 26
+GTE                  : 28
+ID                   : 5 6 9 10 11 13 14 38
+IF                   : 16
+IN                   : 
+INT                  : 
+LPARENT              : 40
+LT                   : 25
+LTE                  : 27
+MINUS                : 33
+MULTI                : 
+NE                   : 24
+NUMBER               : 5 6 39
+ODD                  : 21
+OUT                  : 
+PLUS                 : 32
+PROCEDURE            : 11
+RPARENT              : 40
+SEMMICOLOM            : 
+THEN                 : 16
+UPDATE               : 13
+WHILE                : 17
+error                : 
+
+Nonterminals, with rules where they appear
+
+EQUAL               : 5 6 23
+SEMMICOLOM           : 3 7 11 11 20
+MULTI               : 36
+VAR                  : 7
+addingOperator       : 30 31
+block                : 1 11
+condition            : 16 17
+constAssignmentList  : 3 6
+constDecl            : 2
+empty                : 4 8 12 18
+expression           : 13 21 22 22 31 40
+factor               : 34 35
+identList            : 7 10
+multiplyingOperator  : 35
+procDecl             : 2 11
+program              : 0
+relation             : 22
+statement            : 2 16 17 19 20
+statementList        : 15 20
+term                 : 29 30 31 35
+varDecl              : 2
+

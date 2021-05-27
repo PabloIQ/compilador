@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, HttpResponse
-from analizador_lexico import analizadorLex
+from analizador_lexico import analizadorLexico
 
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -14,7 +14,7 @@ def Index (request):
         entrada = request.POST['editor']
 
         #Analizar tokens
-        listtResult = analizadorLex.analisar(entrada)
+        listtResult = analizadorLexico.analisar(entrada)
         for i in listtResult:
             if i[0] == "error":
                 listErrors.append([i[0],i[1],i[2],i[3]])
@@ -33,7 +33,13 @@ def Sintactico(respuesta):
     return render(respuesta, 'sintactico.html', {
         'title': 'ANALIZADOR SINTÁCTICO'
     })
-
+    
+def semantico(respuesta):
+    
+    return render(respuesta, 'semantico.html', {
+        'title': 'ANALIZADOR SEMÁNTICO'
+    })
+    
 def Login (respuesta):
 
     if respuesta.method == 'POST':

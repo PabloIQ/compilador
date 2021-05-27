@@ -3,6 +3,7 @@
 #y devuelve un objeto Match cuando se encuentra el patrón. Si el patrón no se encuentra, search() devuelve None .
 
 import analizador_lexico.ply.lex as lex
+#import analizador_lexico.ply.lex as lex
 import re
 import codecs
 
@@ -21,7 +22,7 @@ operadorRelacional = ('ODD',
 delimitador = ('LPARENT',
                  'RPARENT',
                  'COMMA',
-                 'SEMICOLOM',
+                 'SEMMICOLOM',
                  'DOT',
                  'UPDATE')
 reservadas = ('BEGIN',
@@ -32,7 +33,7 @@ reservadas = ('BEGIN',
               'DO',
               'CALL',
               'CONST',
-              'INT',
+              'VAR',
               'PROCEDURE',
               'OUT',
               'IN',
@@ -60,7 +61,7 @@ t_GTE       = r'>='
 t_LPARENT   = r'\('
 t_RPARENT   = r'\)'
 t_COMMA     = r','
-t_SEMICOLOM = r';'
+t_SEMMICOLOM = r';'
 t_DOT       = r'\.'
 t_UPDATE    = r':='
 
@@ -102,7 +103,10 @@ def t_error(t):
     t.value = t.value[0]
     return t
 
-
+lexer = lex.lex()
+def mylex(inp):
+    lexer.input(inp)
+    #etc.
 
 def analisar(cadena=""):
     #Construyendo el lexer 
@@ -139,3 +143,37 @@ def analisar(cadena=""):
         #print("tok.lineno = ",tok.lineno,"tok.lexpos = ",tok.lexpos)
 
     return tokensFindedList
+
+#analizador = lex.lex()
+#analizador.input(cadena)
+
+# while True:
+# 	tok = analizador.token()
+# 	if not tok : break
+# 	print tok
+cadena ="""
+CONST
+	n = 7,
+	m = 85;
+VAR
+	x, y, z, q, r;
+
+PROCEDURE multiply;
+VAR a, b;
+
+BEGIN 
+	a := x;
+	b := y;
+	x := 0;
+WHILE b > 0 DO BEGIN
+		IF ODD b THEN x := x + a;
+		a := 2 * a;
+		b := b  / 2
+END
+END;
+"""
+#result = analisar(cadena)
+#print(result)
+#result = analisar(cadena)
+#print(result)
+
