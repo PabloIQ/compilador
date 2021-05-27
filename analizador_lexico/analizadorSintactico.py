@@ -272,11 +272,11 @@ def intern_test(directorio=None):
 def parser(cadena=""):
     yacc.yacc()
     result = yacc.parse(cadena,debug=1)
-    impresion = result.imprimir(" ")
+    #impresion = result.imprimir(" ")
     traduccion = result.traducir()
     #traducir(result)
     #print(result)
-    return [traduccion, impresion]
+    return traduccion
 #pagina para ver el arbol sintactico http://www.webgraphviz.com/
 #intern_test()
 
