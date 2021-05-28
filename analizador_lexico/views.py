@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, HttpResponse
 from analizador_lexico import analizadorLexico
+from analizador_lexico import analizadorSintactico as ast
 
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -29,9 +30,15 @@ def Index (request):
     })
 
 def Sintactico(respuesta):
+    var = 0
+    if respuesta.method == 'POST':
+        entrada = respuesta.POST['editor']
+        var = ast.parser(entrada)
+        print(var)
 
     return render(respuesta, 'sintactico.html', {
-        'title': 'ANALIZADOR SINTÁCTICO'
+        'title': 'ANALIZADOR SINTÁCTICO',
+        'var': var
     })
     
 def semantico(respuesta):

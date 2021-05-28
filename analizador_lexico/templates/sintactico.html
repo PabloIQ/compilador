@@ -10,5 +10,19 @@ Analizador semantico
 
 
 {% block contenido %}
+    <form method="post">
+        {% csrf_token %}
+
+        <!--<textarea name="editor" id="sintactico"></textarea>-->
+        <input name="editor" id="sintactico" type="text">
+        <div class="btnd">
+            <input type="submit" class="btn0" value="Ejecutar">
+        </div>
+
+        <textarea id="sintactico">
+            {{ var }}
+        </textarea>
+    </form>
+
 
 {% endblock %}
