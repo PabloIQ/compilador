@@ -28,13 +28,15 @@ def Index (request):
         'tokensValidos': listTokensValidos,
         'tokensError': listErrors
     })
-
+text_enter = ''
 def Sintactico(respuesta):
     var = 0
+    global text_enter
     if respuesta.method == 'POST':
         entrada = respuesta.POST['editor']
         var = ast.parser(entrada)
-        print(var)
+        text_enter = entrada
+        
 
     return render(respuesta, 'sintactico.html', {
         'title': 'ANALIZADOR SINTÁCTICO',
@@ -42,8 +44,12 @@ def Sintactico(respuesta):
     })
     
 def semantico(respuesta):
-    
+    global text_enter
+    var = text_enter
+    var = ast.parser(text_enter)
+
     return render(respuesta, 'semantico.html', {
+        'var': var,
         'title': 'ANALIZADOR SEMÁNTICO'
     })
     
